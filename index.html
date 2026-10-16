@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Salon & Day Spa | Kapolei, HI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">O <span>SALON</span></div>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#services">Services</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#request">Book/Request</a>
+            <a href="#about">Hours & Info</a>
+        </nav>
+        <a href="#request" class="cta-btn">Request Appointment</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>O Salon & Day Spa</h1>
+        <p>Your premier beauty destination in Kapolei, Hawaii. Specialized in intentional hair color transformations, advanced skincare facials, and stunning nail designs.</p>
+        <div style="display: flex; gap: 15px; margin-top: 15px;">
+            <a href="#services" class="cta-btn secondary">View Menu</a>
+            <a href="#request" class="cta-btn">Book Appointment</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Our Service Menu</h2>
+        
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('hair')">Hair Styling & Color</button>
+            <button class="tab-btn" onclick="switchTab('skincare')">Facials & Skincare</button>
+            <button class="tab-btn" onclick="switchTab('nails')">Nails & Makeup</button>
+        </div>
+
+        <!-- Hair Menu -->
+        <div id="hair" class="services-grid active">
+            <div class="service-card">
+                <div class="service-header"><span>Balayage & Highlights</span><span>Varies</span></div>
+                <p class="service-desc">Expert multi-dimensional blonding and coloring tailored intentionally from roots to ends.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-header"><span>Root Touch-Up & Full Color</span><span>Varies</span></div>
+                <p class="service-desc">Keep your shade rich and vibrant or execute a flawless complete shift.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-header"><span>Precision Haircuts & Styling</span><span>Varies</span></div>
+                <p class="service-desc">Tailored cuts from clean short styles to thick long locks, complete with professional wash and blowout.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-header"><span>K-Tip Hair Extensions</span><span>Consultation</span></div>
+                <p class="service-desc">Premium extension installation for added luxurious length, density, and volume.</p>
+            </div>
+        </div>
+
+        <!-- Skincare Menu -->
+        <div id="skincare" class="services-grid">
+            <div class="service-card">
+                <div class="service-header"><span>Customized Facial</span><span>Varies</span></div>
+                <p class="service-desc">A deep, nourishing skin treatment targeting individual dermal concerns.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-header"><span>Acne Clearing Facial</span><span>Varies</span></div>
+                <p class="service-desc">Specialized treatment addressing pores, dynamic breakouts, and facial inflammation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-header"><span>Microdermabrasion</span><span>Varies</span></div>
+                <p class="service-desc">Advanced exfoliating process gently polishing away dead skin cells to refresh outer layers.</p>
+            </div>
+        </div>
+
+        <!-- Nails Menu -->
+        <div id="nails" class="services-grid">
+            <div class="service-card">
+                <div class="service-header"><span>Manicure & Nail Art</span><span>Varies</span></div>
+                <p class="service-desc">Nail trimming, shaping, cuticle care, and gorgeous modern design sets.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-header"><span>Full Glam Makeup</span><span>Varies</span></div>
+                <p class="service-desc">Professional application perfect for events, bridal sessions, or photography.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-header"><span>Gentle Hair Removal</span><span>Varies</span></div>
+                <p class="service-desc">Precise waxing services for flawless brow shaping and silky smooth skin layout.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-Star Reviews Section -->
+    <section id="reviews" style="background-color: #f1f0ea;">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"I was happily shocked! Donna is so intentional and knowledgeable with bleach, she’s professional and even had covers for my ears so they wouldn’t be bleached or dyed."</p>
+                <p class="reviewer">- Verified Client</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"I love Donna - she's so talented with color. I fly all the way from the Big Island to see her and it’s well worth the trip every single time."</p>
+                <p class="reviewer">- Island Traveler</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p class="review-text">"I have naturally curly hair and like short hair cuts and she delivers every time. She even does my k-tip hair extensions and I always look fantastic."</p>
+                <p class="reviewer">- Local regular</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request/Booking Netlify Form Area -->
+    <section id="request">
+        <h2 class="section-title">Request an Appointment</h2>
+        <div class="form-container">
+            <!-- Netlify Form Definition Setup -->
+            <form id="appointmentForm" name="appointment-request" method="POST" data-netlify="true">
+                <!-- Hidden inputs essential for Netlify form routing detection -->
+                <input type="hidden" name="form-name" value="appointment-request" />
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="name" required placeholder="Jane Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailAddress">Email Address</label>
+                    <input type="email" id="emailAddress" name="email" required placeholder="jane@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phone" required placeholder="(808) 555-0123">
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceCategory">Desired Service</label>
+                    <select id="serviceCategory" name="service" required>
+                        <option value="" disabled selected>Select a treatment...</option>
+                        <option value="hair-color">Hair Color & Blonding</option>
+                        <option value="haircut">Precision Haircut & Styling</option>
+                        <option value="extensions">K-Tip Hair Extensions</option>
+                        <option value="facial">Customized Facial / Skincare</option>
+                        <option value="nails">Manicure & Nail Art</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferredDate">Preferred Date & Time Window</label>
+                    <input type="datetime-local" id="preferredDate" name="datetime" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientNotes">Special Requests or Hair History</label>
+                    <textarea id="clientNotes" name="notes" rows="4" placeholder="Tell us about your current hair color history or skin goals..."></textarea>
+                </div>
+
+                <button type="submit" class="cta-btn submit-btn">Submit Request</button>
+            </form>
+            
+            <!-- Dynamic Success Window Target -->
+            <div id="formSuccessMessage" class="success-message" style="display: none;">
+                <h3>✨ Request Received Successfully!</h3>
+                <p>Thank you for reaching out to O Salon & Day Spa. Donna or a member of our team will review your requested slots and contact you shortly to confirm your booking.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Info Section -->
+    <section id="about">
+        <h2 class="section-title">Visit Us</h2>
+        <div class="info-container">
+            <div class="info-block">
+                <h3>Our Location</h3>
+                <p><strong>O Salon & Day Spa</strong></p>
+                <p>1020 Kakala St, Apt 905</p>
+                <p>Kapolei, HI 96707</p>
+                <p style="margin-top: 15px;"><strong>Phone:</strong> (808) 689-6611</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 10px;">*Appointments are highly recommended. Nestled in a clean, modern, and welcoming oasis environment featuring complimentary coffee, water, and snacks.</p>
+            </div>
+            <div class="info-block">
+                <h3>Operating Hours</h3>
+                <div class="hours-list">
+                    <div><span>Monday</span><span>10:00 AM - 7:00 PM</span></div>
+                    <div><span>Tuesday</span><span>10:00 AM - 7:00 PM</span></div>
+                    <div><span>Wednesday</span><span>10:00 AM - 7:00 PM</span></div>
+                    <div><span>Thursday</span><span>10:00 AM - 7:00 PM</span></div>
+                    <div><span>Friday</span><span>10:00 AM - 7:00 PM</span></div>
+                    <div><span>Saturday</span><span>9:00 AM - 7:00 PM</span></div>
+                    <div><span>Sunday</span><span style="color: #c0392b; font-weight: 600;">Closed</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 O Salon & Day Spa. All Rights Reserved. Built with automated Netlify Forms routing.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
