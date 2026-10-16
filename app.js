@@ -1,65 +1,70 @@
-// Tab Switching Controller Logic
-function switchTab(category) {
-    const grids = document.querySelectorAll('.services-grid');
-    grids.forEach(grid => grid.classList.remove('active'));
-
-    const buttons = document.querySelectorAll('.tab-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-
-    document.getElementById(category).classList.add('active');
-    event.currentTarget.classList.add('active');
-}
-
-// Active Navbar Highlighting Engine during User Scrolling
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
+// Ensure the DOM is fully loaded before binding event handlers
+document.addEventListener("DOMContentLoaded", () => {
     
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.pageYOffset >= sectionTop - 150) {
-            current = section.getAttribute('id');
+    // 1. Expose switchTab to the global window scope so the HTML onclick elements can find it
+    window.switchTab = function(category) {
+        // Find all individual service grids and remove active classes
+        const grids = document.querySelectorAll('.services-grid');
+        grids.forEach(grid => grid.classList.remove('active'));
+
+        // Find all selection tab buttons and remove active styles
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // Target the selected category container grid and bring it to view
+        const targetGrid = document.getElementById(category);
+        if (targetGrid) {
+            targetGrid.classList.add('active');
         }
-    });
 
-    navLinks.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href').includes(current)) {
-            a.classList.add('active');
+        // Apply active color scheme styles directly to the clicked button element
+        if (window.event && window.event.currentTarget) {
+            window.event.currentTarget.classList.add('active');
         }
-    });
-});
+    };
 
-// Netlify AJAX Form Submission Pipeline
-document.getElementById("appointmentForm").addEventListener("submit", function (e) {
-    // 1. Prevent the default browser page reload behavior
-    e.preventDefault();
-
-    const form = e.target;
-    // 2. Capture all the input fields inside the form elements
-    const formData = new FormData(form);
-
-    // 3. Post the serialized input parameters asynchronously to Netlify's route handler
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-    })
-    .then(() => {
-        // 4. Smoothly hide the active form container element
-        form.style.display = "none";
+    // 2. Active Navbar Highlighting Engine during User Scrolling
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
         
-        // 5. Reveal the beautiful confirmation success message box
-        document.getElementById("formSuccessMessage").style.display = "block";
-    })
-    .catch((error) => {
-        // Fallback error routing if the user's internet drops during transmission
-        alert("An unexpected transmission error occurred: " + error + ". Please call us directly at (808) 689-6611.");
-    });
-});
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
 
-    .catch((error) => {
-        alert("An unexpected transmission error occurred: " + error + ". Please call us directly at (808) 689-6611.");
+        navLinks.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href').includes(current)) {
+                a.classList.add('active');
+            }
+        });
     });
+
+    // 3. Netlify AJAX Form Submission Pipeline
+    const appointmentForm = document.getElementById("appointmentForm");
+    if (appointmentForm) {
+        appointmentForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString(),
+            })
+            .then(() => {
+                form.style.display = "none";
+                document.getElementById("formSuccessMessage").style.display = "block";
+            })
+            .catch((error) => {
+                alert("An unexpected transmission error occurred: " + error + ". Please call us directly at (808) 689-6611.");
+            });
+        });
+    }
 });
