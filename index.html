@@ -116,62 +116,64 @@
         </div>
     </section>
 
-    <!-- Request/Booking Netlify Form Area -->
-    <section id="request">
-        <h2 class="section-title">Request an Appointment</h2>
-        <div class="form-container">
-            <!-- Netlify Form Definition Setup -->
-            <form id="appointmentForm" name="appointment-request" method="POST" data-netlify="true">
-                <!-- Hidden inputs essential for Netlify form routing detection -->
-                <input type="hidden" name="form-name" value="appointment-request" />
-                
-                <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" name="name" required placeholder="Jane Doe">
-                </div>
-                
-                <div class="form-group">
-                    <label for="emailAddress">Email Address</label>
-                    <input type="email" id="emailAddress" name="email" required placeholder="jane@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phone" required placeholder="(808) 555-0123">
-                </div>
-
-                <div class="form-group">
-                    <label for="serviceCategory">Desired Service</label>
-                    <select id="serviceCategory" name="service" required>
-                        <option value="" disabled selected>Select a treatment...</option>
-                        <option value="hair-color">Hair Color & Blonding</option>
-                        <option value="haircut">Precision Haircut & Styling</option>
-                        <option value="extensions">K-Tip Hair Extensions</option>
-                        <option value="facial">Customized Facial / Skincare</option>
-                        <option value="nails">Manicure & Nail Art</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="preferredDate">Preferred Date & Time Window</label>
-                    <input type="datetime-local" id="preferredDate" name="datetime" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="clientNotes">Special Requests or Hair History</label>
-                    <textarea id="clientNotes" name="notes" rows="4" placeholder="Tell us about your current hair color history or skin goals..."></textarea>
-                </div>
-
-                <button type="submit" class="cta-btn submit-btn">Submit Request</button>
-            </form>
+  <!-- Request/Booking Netlify Form Area -->
+<section id="request">
+    <h2 class="section-title">Request an Appointment</h2>
+    <div class="form-container">
+        
+        <!-- Netlify Form Definition Setup -->
+        <form id="appointmentForm" name="appointment-request" method="POST" data-netlify="true">
+            <!-- Hidden input essential for Netlify form routing detection -->
+            <input type="hidden" name="form-name" value="appointment-request" />
             
-            <!-- Dynamic Success Window Target -->
-            <div id="formSuccessMessage" class="success-message" style="display: none;">
-                <h3>✨ Request Received Successfully!</h3>
-                <p>Thank you for reaching out to O Salon & Day Spa. Donna or a member of our team will review your requested slots and contact you shortly to confirm your booking.</p>
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="name" required placeholder="Jane Doe">
             </div>
+            
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <input type="email" id="emailAddress" name="email" required placeholder="jane@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="phone" required placeholder="(808) 555-0123">
+            </div>
+
+            <div class="form-group">
+                <label for="serviceCategory">Desired Service</label>
+                <select id="serviceCategory" name="service" required>
+                    <option value="" disabled selected>Select a treatment...</option>
+                    <option value="hair-color">Hair Color & Blonding</option>
+                    <option value="haircut">Precision Haircut & Styling</option>
+                    <option value="extensions">K-Tip Hair Extensions</option>
+                    <option value="facial">Customized Facial / Skincare</option>
+                    <option value="nails">Manicure & Nail Art</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="preferredDate">Preferred Date & Time Window</label>
+                <input type="datetime-local" id="preferredDate" name="datetime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="clientNotes">Special Requests or Hair History</label>
+                <textarea id="clientNotes" name="notes" rows="4" placeholder="Tell us about your current hair color history or skin goals..."></textarea>
+            </div>
+
+            <button type="submit" class="cta-btn submit-btn">Submit Request</button>
+        </form>
+        
+        <!-- Dynamic Success Window Target (Controlled by app.js) -->
+        <div id="formSuccessMessage" class="success-message" style="display: none;">
+            <h3>✨ Request Received Successfully!</h3>
+            <p>Thank you for reaching out to O Salon & Day Spa. Donna or a member of our team will review your requested slots and contact you shortly to confirm your booking.</p>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Location & Info Section -->
     <section id="about">
